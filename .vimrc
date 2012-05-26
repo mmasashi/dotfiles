@@ -1,4 +1,4 @@
-" -----------------------
+"-----------------------
 " Basical setting
 " -----------------------
 " no compatible to vi
@@ -92,34 +92,28 @@ set expandtab
 :autocmd FileType javascript set ts=2 sw=2 expandtab
 :autocmd BufNewFile *.js set ft=javascript fenc=utf-8
 
-
 " -----------------------
 " Vundle
 " -----------------------
 set nocompatible
 filetype off
-
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
-
 Bundle 'Shougo/neocomplcache'
 Bundle 'thinca/vim-quickrun'
-
 Bundle 'clones/vim-l9'
 Bundle 'FuzzyFinder'
-
+Bundle 'The-NERD-tree'
+Bundle 'The-NERD-Commenter'
 "ruby
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-cucumber'
-
 "js
 Bundle 'JavaScript-syntax'
 Bundle 'itspriddle/vim-javascript-indent'
-
 "php
 Bundle 'cakephp.vim'
-
 filetype plugin indent on     " required!
 
 " -----------------------
