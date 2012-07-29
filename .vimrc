@@ -1,4 +1,4 @@
-"-----------------------
+" -----------------------
 " Basical setting
 " -----------------------
 " no compatible to vi
@@ -72,7 +72,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 " use space with tab key
-set expandtab
+" set expandtab
 
 " -----------------------
 " Encoding
@@ -114,6 +114,9 @@ Bundle 'JavaScript-syntax'
 Bundle 'itspriddle/vim-javascript-indent'
 "php
 Bundle 'cakephp.vim'
+"db
+Bundle 'dbext.vim'
+
 filetype plugin indent on     " required!
 
 " -----------------------
@@ -122,3 +125,5 @@ filetype plugin indent on     " required!
 set hidden
 "set shortmess+=I
 
+set list
+set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<

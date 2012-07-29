@@ -1,7 +1,8 @@
 # export 
 export LANG=ja_JP.UTF-8
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin
-export MANPATH=$MANPATH:/opt/local/man
+export PATH=/usr/local/bin:$PATH
+#export PATH=$PATH:/opt/local/bin:/opt/local/sbin
+#export MANPATH=$MANPATH:/opt/local/man
 export EDITOR=vim
 bindkey -v
 
@@ -67,3 +68,16 @@ export TEXT_BROWSER=w3m
 LIBD="./lib"
 source $LIBD/zaw/zaw.zsh
 
+# rbenv
+eval "$(rbenv init -)"
+
+# java for mac
+export JAVA_HOME=$(dirname $(readlink $(which java)))/../../CurrentJDK/Home/
+
+# git
+git config --global color.ui auto
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.br branch
+git config --global alias.hist 'log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
