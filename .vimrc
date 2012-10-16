@@ -10,6 +10,8 @@ set vb t_vb=
 " backspace (eol=end of line, start=start of line)
 set backspace=indent,eol,start
 
+set modeline
+
 " -----------------------
 " Backup setting
 " -----------------------

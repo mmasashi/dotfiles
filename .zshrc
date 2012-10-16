@@ -5,6 +5,7 @@ export PATH=/usr/local/bin:$PATH
 #export MANPATH=$MANPATH:/opt/local/man
 export EDITOR=vim
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 
 # history 
 HISTFILE=~/.zsh_history
@@ -81,3 +82,7 @@ git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.br branch
 git config --global alias.hist 'log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
+
+# ssh-settings
+# eval `ssh-agent`
+# ssh-add ~/.ssh/hapyrus-rsa
