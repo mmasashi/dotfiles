@@ -115,7 +115,7 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'JavaScript-syntax'
 Bundle 'itspriddle/vim-javascript-indent'
 "php
-Bundle 'cakephp.vim'
+"Bundle 'cakephp.vim'
 "db
 Bundle 'dbext.vim'
 

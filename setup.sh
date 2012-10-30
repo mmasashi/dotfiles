@@ -8,4 +8,4 @@ do
   ln -s $BASE_DIR/$file ~/$file
 done
 
-ln -s ~/dotfiles/vimfiles ~/.vim
+ln -s ~/dotfiles/.vim ~/.vim
