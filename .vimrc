@@ -93,6 +93,7 @@ set shiftwidth=4
 :autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 :autocmd FileType javascript set ts=2 sw=2 expandtab
 :autocmd FileType ruby set ts=2 sw=2 expandtab
+:autocmd FileType *.rb set ts=2 sw=2 expandtab
 :autocmd BufNewFile *.js set ft=javascript fenc=utf-8
 
 " -----------------------
@@ -114,12 +115,13 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'thinca/vim-ref'
 "syntastic
-NeoBundle 'tpope/vim-pathogen'
-NeoBundle 'scrooloose/syntastic'
-call pathogen#infect()
-let g:syntastic_mode_map = { 'mode': 'active',
-  \ 'active_filetypes': [],
-  \ 'passive_filetypes': ['html'] }
+"NeoBundle 'tpope/vim-pathogen'
+"NeoBundle 'scrooloose/syntastic'
+"call pathogen#infect()
+"let g:syntastic_mode_map = { 'mode': 'active',
+"  \ 'active_filetypes': [],
+"  \ 'passive_filetypes': ['html', 'ruby', 'rb'] }
+
 "html
 NeoBundle 'tpope/vim-haml'
 "ruby
