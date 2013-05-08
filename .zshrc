@@ -64,13 +64,11 @@ setopt complete_aliases
 setopt noautoremoveslash
 export TEXT_BROWSER=w3m
 
-# library
-# https://github.com/nakamuray/zaw
-LIBD="./lib"
-source $LIBD/zaw/zaw.zsh
-
 # rbenv
 eval "$(rbenv init -)"
+
+# bundle (ruby)
+alias be="bundle exe"
 
 # java for mac
 export JAVA_HOME=$(dirname $(readlink $(which java)))/../../CurrentJDK/Home/
@@ -82,7 +80,16 @@ git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.br branch
 git config --global alias.hist 'log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
+alias gsb="git st -sb"
+alias g=git
 
 # ssh-settings
-# eval `ssh-agent`
-# ssh-add ~/.ssh/hapyrus-rsa
+#eval `ssh-agent`
+#ssh-add ~/.ssh/hapyrus-rsa
+
+# Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# postgresql
+alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"

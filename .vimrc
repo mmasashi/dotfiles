@@ -92,32 +92,46 @@ set shiftwidth=4
 :autocmd FileType c,cpp,perl set cindent
 :autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 :autocmd FileType javascript set ts=2 sw=2 expandtab
+:autocmd FileType ruby set ts=2 sw=2 expandtab
 :autocmd BufNewFile *.js set ft=javascript fenc=utf-8
 
 " -----------------------
-" Vundle
+" NeoBundle
 " -----------------------
 set nocompatible
 filetype off
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
-Bundle 'Shougo/neocomplcache'
-Bundle 'thinca/vim-quickrun'
-Bundle 'clones/vim-l9'
-Bundle 'FuzzyFinder'
-Bundle 'The-NERD-tree'
-Bundle 'The-NERD-Commenter'
+set rtp+=~/dotfiles/neobundle.vim
+if has('vim_starting')
+  set runtimepath+=~/dotfiles/neobundle.vim
+  call neobundle#rc(expand('~/.vim/'))
+endif
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'clones/vim-l9'
+NeoBundle 'The-NERD-tree'
+NeoBundle 'The-NERD-Commenter'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'othree/eregex.vim'
+NeoBundle 'thinca/vim-ref'
+"syntastic
+NeoBundle 'tpope/vim-pathogen'
+NeoBundle 'scrooloose/syntastic'
+call pathogen#infect()
+let g:syntastic_mode_map = { 'mode': 'active',
+  \ 'active_filetypes': [],
+  \ 'passive_filetypes': ['html'] }
+"html
+NeoBundle 'tpope/vim-haml'
 "ruby
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-cucumber'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-cucumber'
+NeoBundle 'janx/vim-rubytest'
 "js
-Bundle 'JavaScript-syntax'
-Bundle 'itspriddle/vim-javascript-indent'
-"php
-"Bundle 'cakephp.vim'
+NeoBundle 'JavaScript-syntax'
+NeoBundle 'itspriddle/vim-javascript-indent'
 "db
-Bundle 'dbext.vim'
+NeoBundle 'dbext.vim'
 
 filetype plugin indent on     " required!
 
