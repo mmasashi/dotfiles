@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE_DIR="~/dotfiles"
+BASE_DIR=~/dotfiles
 FILE_LIST=( ".gvimrc" ".inputrc" ".vimrc" ".zshrc" );
 
 for file in "${FILE_LIST[@]}"
