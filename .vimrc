@@ -113,6 +113,7 @@ NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'othree/eregex.vim'
+let g:eregex_default_enable = 0
 NeoBundle 'thinca/vim-ref'
 "syntastic
 "NeoBundle 'tpope/vim-pathogen'
