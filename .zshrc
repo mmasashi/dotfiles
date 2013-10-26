@@ -93,3 +93,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # postgresql
 alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+# apache2 for mac
+alias a2_start="sudo apachectl start"
+alias a2_restart="sudo apachectl restart"
+alias a2_stop="sudo apachectl stop"
