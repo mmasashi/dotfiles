@@ -1,5 +1,6 @@
 # export 
-export LANG=ja_JP.UTF-8
+#export LANG=ja_JP.UTF-8
+export LANG=en_US.UTF-8
 export PATH=/usr/local/bin:$PATH
 #export PATH=$PATH:/opt/local/bin:/opt/local/sbin
 #export MANPATH=$MANPATH:/opt/local/man
@@ -63,6 +64,10 @@ setopt correct
 setopt complete_aliases
 setopt noautoremoveslash
 export TEXT_BROWSER=w3m
+
+# turn off screen lock shortcut(ctrl+s)
+stty stop undef
+stty start undef
 
 # rbenv
 eval "$(rbenv init -)"
