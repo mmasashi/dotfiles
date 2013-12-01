@@ -18,6 +18,8 @@ set modeline
 " no backup
 set nobackup
 " set backup
+" no swap file
+set noswapfile
 
 " -----------------------
 " Search setting
@@ -84,6 +86,12 @@ set shiftwidth=4
 :set fenc=utf-8
 ":set fencs=euc-jp,cp932,iso-2022-jp
 ":set fencs+=utf-8
+
+" -----------------------
+" Hotkey
+" -----------------------
+" open .vimrc
+nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 
 " -----------------------
 " Autocommand
