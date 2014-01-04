@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BASE_DIR=~/dotfiles
-FILE_LIST=( ".gvimrc" ".inputrc" ".vimrc" ".zshrc" );
+FILE_LIST=( ".gvimrc" ".inputrc" ".vimrc" ".zshrc" ".tmux.conf");
 
 for file in "${FILE_LIST[@]}"
 do
