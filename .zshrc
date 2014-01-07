@@ -70,13 +70,12 @@ stty stop undef
 stty start undef
 
 # rbenv
-eval "$(rbenv init -)"
+if type rbenv >/dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
 
 # bundle (ruby)
 alias be="bundle exe"
-
-# java for mac
-export JAVA_HOME=$(dirname $(readlink $(which java)))/../../CurrentJDK/Home/
 
 # git
 git config --global color.ui auto
@@ -97,12 +96,18 @@ fi
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# postgresql
-alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-alias psql_login="psql postgres"
+## Mac OSX (Darwin)
+if [ "$(uname)" = "Darwin" ]; then
+  # java for mac
+  export JAVA_HOME=$(dirname $(readlink $(which java)))/../../CurrentJDK/Home/
 
-# apache2 for mac
-alias a2_start="sudo apachectl start"
-alias a2_restart="sudo apachectl restart"
-alias a2_stop="sudo apachectl stop"
+  # postgresql
+  alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+  alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+  alias psql_login="psql postgres"
+
+  # apache2 for mac
+  alias a2_start="sudo apachectl start"
+  alias a2_restart="sudo apachectl restart"
+  alias a2_stop="sudo apachectl stop"
+fi
