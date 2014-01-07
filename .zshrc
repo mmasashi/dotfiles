@@ -56,7 +56,6 @@ export LSCOLORS=ExFxCxdxBxegedabagacad
 export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-alias ls='ls -G'
 
 setopt auto_cd
 setopt auto_param_keys
@@ -99,6 +98,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 ## Mac OSX (Darwin)
 if [ "$(uname)" = "Darwin" ]; then
+  # ls color
+  alias ls='ls -G'
+
   # java for mac
   export JAVA_HOME=$(dirname $(readlink $(which java)))/../../CurrentJDK/Home/
 
@@ -111,4 +113,9 @@ if [ "$(uname)" = "Darwin" ]; then
   alias a2_start="sudo apachectl start"
   alias a2_restart="sudo apachectl restart"
   alias a2_stop="sudo apachectl stop"
+
+## Linux
+else
+  # ls color
+  alias ls='ls --color'
 fi
