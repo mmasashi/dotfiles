@@ -74,6 +74,13 @@ if type rbenv >/dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi
 
+# rvm
+RVM_SCRIPT_PATH="$HOME/.rvm/scripts/rvm"
+if [ -f "${RVM_SCRIPT_PATH}" ]; then
+  source $RVM_SCRIPT_PATH
+  PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+fi
+
 # bundle (ruby)
 alias be="bundle exe"
 
