@@ -11,14 +11,14 @@ FILE_LIST=(
 .gitignore
 .hgrc
 .gemrc
+.vim
+.bundle
 )
 
 for file in "${FILE_LIST[@]}"
 do
   ln -s $BASE_DIR/$file ~/$file
 done
-
-ln -s ~/dotfiles/.vim ~/.vim
 
 # Setup vim plugins
 #   Run `git submodule update --init` in dotfiles
