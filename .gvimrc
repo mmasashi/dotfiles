@@ -24,4 +24,4 @@ set background=dark   "set the background color
 colorscheme railscasts
 
 " Font settings
-set guifont=Ricty\ Regular\ for\ Powerline:h12
+set guifont=Ricty\ Regular\ for\ Powerline:h13
