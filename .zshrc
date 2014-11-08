@@ -69,6 +69,9 @@ export TEXT_BROWSER=w3m
 stty stop undef
 stty start undef
 
+# go
+export GOPATH=$HOME/.go
+
 # rbenv
 if type rbenv >/dev/null 2>&1; then
   eval "$(rbenv init -)"
@@ -93,6 +96,7 @@ git config --global alias.br branch
 git config --global alias.hist 'log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
 alias gsb="git st -sb"
 alias g=git
+alias ll="ls -al"
 
 # ssh-settings
 sshrc_path="$HOME/.sshrc"
