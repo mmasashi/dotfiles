@@ -9,3 +9,6 @@
 	st = status
 	br = branch
 	hist = log --pretty=format:\\\"%h %ad | %s%d [%an]\\\" --graph --date=short
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
