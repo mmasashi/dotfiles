@@ -22,3 +22,6 @@ set background=dark   "set the background color
 
 " https://github.com/jpo/vim-railscasts-theme
 colorscheme railscasts
+
+" Font settings
+set guifont=Ricty\ Regular\ for\ Powerline:h12

@@ -94,14 +94,21 @@ set shiftwidth=4
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 
 " -----------------------
+" powerline
+" -----------------------
+"let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'compatible'
+set t_Co=256
+
+" -----------------------
 " Autocommand
 " -----------------------
 :filetype on
-:autocmd FileType c,cpp,perl set cindent
+:autocmd FileType perl set cindent
 :autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 :autocmd FileType javascript set ts=2 sw=2 expandtab
 :autocmd FileType ruby set ts=2 sw=2 expandtab
-:autocmd FileType *.rb set ts=2 sw=2 expandtab
+:autocmd FileType c,cpp set ts=2 sw=2 expandtab
 :autocmd BufNewFile *.js set ft=javascript fenc=utf-8
 
 " -----------------------
@@ -115,6 +122,7 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/'))
 endif
 NeoBundle 'Shougo/neocomplcache'
+let g:neocomplcache_enable_at_startup = 1
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'clones/vim-l9'
 NeoBundle 'The-NERD-tree'
@@ -143,8 +151,20 @@ NeoBundle 'JavaScript-syntax'
 NeoBundle 'itspriddle/vim-javascript-indent'
 "db
 NeoBundle 'dbext.vim'
+"powerline
+NeoBundle 'alpaca-tc/alpaca_powertabline'
+NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+NeoBundle 'Lokaltog/powerline-fontpatcher'
 
 filetype plugin indent on     " required!
+
+"close tag automatically
+augroup MyXML
+	autocmd!
+	autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+	autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+	autocmd Filetype eruby inoremap <buffer> </ </<C-x><C-o>
+augroup END
 
 " -----------------------
 " other
@@ -154,3 +174,4 @@ set hidden
 
 set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+
