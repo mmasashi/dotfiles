@@ -114,13 +114,16 @@ set t_Co=256
 " -----------------------
 " NeoBundle
 " -----------------------
-set nocompatible
-filetype off
-set rtp+=~/dotfiles/neobundle.vim
 if has('vim_starting')
-  set runtimepath+=~/dotfiles/neobundle.vim
-  call neobundle#rc(expand('~/.vim/'))
+  set nocompatible
+  set runtimepath+=~/dotfiles/.vim/bundle/neobundle.vim
 endif
+
+call neobundle#begin(expand('~/.vim/bundle')) " required
+
+" Let NeoBundle manage NeoBundl
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
 NeoBundle 'thinca/vim-quickrun'
@@ -155,8 +158,16 @@ NeoBundle 'dbext.vim'
 NeoBundle 'alpaca-tc/alpaca_powertabline'
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'Lokaltog/powerline-fontpatcher'
+"shell
+NeoBundle 'Shougo/vimshell'
+
+call neobundle#end()
 
 filetype plugin indent on     " required!
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 "close tag automatically
 augroup MyXML
