@@ -15,6 +15,7 @@ FILE_LIST=(
 .vim
 .bundle
 )
+# .sshrc is not copied.
 
 for file in "${FILE_LIST[@]}"
 do

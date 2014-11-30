@@ -1,0 +1,24 @@
+# Run ssh-agent with additonal ssh-key
+#
+# This file is optional, and it's disabled by default.
+# How to enable .sshrc
+#   Copy .sshrc to ~/.sshrc
+#   Edit priv_path and passphrase
+
+# ssh-settings
+eval $(ssh-agent)
+priv_path="$HOME/.ssh/ida_rsa"
+passphrase="aaaa"
+
+if [ "$passphrase" = "" ]; then
+  # without passphrase
+  ssh-add $priv_path
+else
+  # with passphrase
+  expect << EOF
+  spawn ssh-add $priv_path
+  expect "Enter passphrase"
+  send "$passphrase\r"
+  expect eof
+EOF
+fi
