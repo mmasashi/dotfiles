@@ -20,6 +20,9 @@ do
   ln -s $BASE_DIR/$file ~/$file
 done
 
+# setup directories
+mkdir -p ~/logs/iterm2
+
 # Setup vim plugins
 #   Run `git submodule update --init` in dotfiles
 #   directory to clone NeoBundle.
