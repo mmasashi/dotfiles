@@ -6,6 +6,7 @@ FILE_LIST=(
 .inputrc
 .vimrc
 .zshrc
+.zlogout
 .tmux.conf
 .gitconfig
 .gitignore
@@ -17,7 +18,9 @@ FILE_LIST=(
 
 for file in "${FILE_LIST[@]}"
 do
-  ln -s $BASE_DIR/$file ~/$file
+  if [[ ! -f ~/$file ]] && [[ ! -d ~/$file ]]; then
+    ln -s $BASE_DIR/$file ~/$file
+  fi
 done
 
 # setup directories
