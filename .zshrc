@@ -96,6 +96,7 @@ git config --global alias.br branch
 git config --global alias.hist 'log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
 alias gsb="git st -sb"
 alias g=git
+alias b=bzr
 alias ll="ls -al"
 
 # ssh-settings
@@ -109,24 +110,44 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 ## Mac OSX (Darwin)
 if [ "$(uname)" = "Darwin" ]; then
+  # clear
+  alias c='clear'
+
   # ls color
   alias ls='ls -G'
 
   # java for mac
-  export JAVA_HOME=$(dirname $(readlink $(which java)))/../../CurrentJDK/Home/
+  #export JAVA_HOME=$(dirname $(readlink $(which java)))/../../CurrentJDK/Home
+  export JAVA_HOME=$(/usr/libexec/java_home)
 
   # postgresql
   alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
   alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
   alias psql_login="psql postgres"
 
+  # python
+  export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages:$PYTHONPATH
+
   # apache2 for mac
   alias a2_start="sudo apachectl start"
   alias a2_restart="sudo apachectl restart"
   alias a2_stop="sudo apachectl stop"
+
+  # redis
+  alias redis_start="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
+  alias redis_stop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
+
+  # Docker
+  export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
+  export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
+  export DOCKER_TLS_VERIFY=1
 
 ## Linux
 else
   # ls color
   alias ls='ls --color'
 fi
+
+alias gml="g log |grep \"    Merge\"|awk '{print \$3}'|grep -v 'develop'|sed -e \"s/'//g\"|head -n 40"
+
+
