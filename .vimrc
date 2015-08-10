@@ -107,6 +107,7 @@ set t_Co=256
 :autocmd FileType perl set cindent
 :autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
 :autocmd FileType javascript set ts=2 sw=2 expandtab
+:autocmd FileType coffee set ts=2 sw=2 expandtab
 :autocmd FileType ruby set ts=2 sw=2 expandtab
 :autocmd FileType c,cpp set ts=2 sw=2 expandtab
 :autocmd BufNewFile *.js set ft=javascript fenc=utf-8
@@ -160,6 +161,10 @@ NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'Lokaltog/powerline-fontpatcher'
 "shell
 NeoBundle 'Shougo/vimshell'
+"Coffeescript
+NeoBundle 'kchmck/vim-coffee-script'
+"cjsx(jsx in coffee script)
+NeoBundle 'mtscout6/vim-cjsx'
 
 call neobundle#end()
 
