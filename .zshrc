@@ -94,10 +94,13 @@ git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.br branch
 git config --global alias.hist 'log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
-alias gsb="git st -sb"
 alias g=git
+alias gsb="git st -sb"
+# Show feature branches merged into develop branch
+alias gml="g log|grep \"    Merge\"|awk '{if(\$2==\"pull\" && \$3==\"request\"){gsub(/hapyrus\\//, \"\", \$6); print \$6}; if(\$2==\"branch\" && \$3!=\"\\47develop\\47\" && \$7==\"develop\"){gsub(/\\047/, \"\", \$3); print \$3}}'|head -n 15"
+
+# bazaar
 alias b=bzr
-alias ll="ls -al"
 
 # ssh-settings
 sshrc_path="$HOME/.sshrc"
@@ -108,6 +111,7 @@ fi
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# OS dependencies
 ## Mac OSX (Darwin)
 if [ "$(uname)" = "Darwin" ]; then
   # clear
@@ -148,6 +152,5 @@ else
   alias ls='ls --color'
 fi
 
-alias gml="g log |grep \"    Merge\"|awk '{print \$3}'|grep -v 'develop'|sed -e \"s/'//g\"|head -n 40"
-
-
+# Ohter aliases
+alias ll="ls -al"
