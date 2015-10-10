@@ -74,7 +74,7 @@ export GOPATH=$HOME/.go
 
 # rbenv
 if type rbenv >/dev/null 2>&1; then
-  eval "$(rbenv init -)"
+  eval "$(rbenv init - zsh)"
 fi
 
 # rvm
@@ -122,7 +122,7 @@ if [ "$(uname)" = "Darwin" ]; then
 
   # java for mac
   #export JAVA_HOME=$(dirname $(readlink $(which java)))/../../CurrentJDK/Home
-  export JAVA_HOME=$(/usr/libexec/java_home)
+  #export JAVA_HOME=$(/usr/libexec/java_home)
 
   # postgresql
   alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
