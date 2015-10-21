@@ -146,6 +146,11 @@ if [ "$(uname)" = "Darwin" ]; then
   export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
   export DOCKER_TLS_VERIFY=1
 
+  # Nginx
+  # start:    sudo nginx
+  # stop:     sudo nginx -s stop
+  # editconf: sudo vi /usr/local/etc/nginx/nginx.conf
+
 ## Linux
 else
   # ls color
