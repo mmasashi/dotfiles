@@ -15,7 +15,7 @@ FILE_LIST=(
 .vim
 .bundle
 )
-# .sshrc is not copied.
+# .sshrc, .ssh/config is not copied.
 
 for file in "${FILE_LIST[@]}"
 do
@@ -26,6 +26,12 @@ done
 
 # setup directories
 mkdir -p ~/logs/iterm2
+
+# setup ./ssh/config
+mkdir -p ~/.ssh
+if [[ ! -f ~/.ssh/config ]]; then
+  ln -s $BASE_DIR/.ssh/config ~/.ssh/config
+fi
 
 # Setup vim plugins
 #   Run `git submodule update --init` in dotfiles
