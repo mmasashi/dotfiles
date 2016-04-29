@@ -97,7 +97,8 @@ git config --global alias.hist 'log --pretty=format:\"%h %ad | %s%d [%an]\" --gr
 alias g=git
 alias gsb="git st -sb"
 # Show feature branches merged into develop branch
-alias gml="g log|grep \"    Merge\"|awk '{if(\$2==\"pull\" && \$3==\"request\"){gsub(/hapyrus\\//, \"\", \$6); print \$6}; if(\$2==\"branch\" && \$3!=\"\\47develop\\47\" && \$7==\"develop\"){gsub(/\\047/, \"\", \$3); print \$3}}'|head -n 15"
+alias gml="g log|grep \"    Merge\"|awk '{if(\$2==\"pull\" && \$3==\"request\"){gsub(/hapyrus\\//, \"\", \$6); print \$6}; if(\$2==\"branch\" && \$3!=\"\\47develop\\47\" && \$7==\"develop\"){gsub(/\\047/, \"\", \$3); print \$3}; if(\$2==\"branch\" && \$5==\"develop\") {gsub(/\\047/, \"\", \$3); print \$3} }'|head -n 15"
+# g log|grep "    Merge"|grep "into develop"
 
 # bazaar
 alias b=bzr
@@ -151,6 +152,8 @@ if [ "$(uname)" = "Darwin" ]; then
   # stop:     sudo nginx -s stop
   # editconf: sudo vi /usr/local/etc/nginx/nginx.conf
 
+  # Homebrew
+  export HOMEBREW_NO_ANALYTICS=1
 ## Linux
 else
   # ls color

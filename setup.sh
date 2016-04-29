@@ -14,6 +14,7 @@ FILE_LIST=(
 .gemrc
 .vim
 .bundle
+.octaverc
 )
 # .sshrc, .ssh/config is not copied.
 
