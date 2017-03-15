@@ -1,6 +1,7 @@
 # export 
 #export LANG=ja_JP.UTF-8
 export LANG=en_US.UTF-8
+#export NLS_LANG=en_US.AL32UTF8
 export PATH=/usr/local/bin:$PATH
 #export PATH=$PATH:/opt/local/bin:/opt/local/sbin
 #export MANPATH=$MANPATH:/opt/local/man
@@ -10,8 +11,8 @@ bindkey '^R' history-incremental-search-backward
 
 # history 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 
 # autoload
 autoload -U compinit
@@ -130,8 +131,13 @@ if [ "$(uname)" = "Darwin" ]; then
   alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
   alias psql_login="psql postgres"
 
-  # python
-  export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages:$PYTHONPATH
+  # python2.x
+  # export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages:$PYTHONPATH
+
+  # python3
+  unset PYTHONPATH
+  #alias python=python3
+  alias pip3='python3 -m pip'
 
   # apache2 for mac
   alias a2_start="sudo apachectl start"
@@ -143,9 +149,9 @@ if [ "$(uname)" = "Darwin" ]; then
   alias redis_stop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
 
   # Docker
-  export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
-  export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
-  export DOCKER_TLS_VERIFY=1
+  #export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
+  #export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
+  #export DOCKER_TLS_VERIFY=1
 
   # Nginx
   # start:    sudo nginx
@@ -154,6 +160,9 @@ if [ "$(uname)" = "Darwin" ]; then
 
   # Homebrew
   export HOMEBREW_NO_ANALYTICS=1
+
+  # Oracle
+  #source /usr/local/share/instantclient/instantclient.sh
 ## Linux
 else
   # ls color

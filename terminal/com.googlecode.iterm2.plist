@@ -2509,9 +2509,9 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>391 156 924 485 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>196 305 490 416 0 0 1440 877 </string>
+	<string>282 12 1156 864 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>493 451 490 426 0 0 1440 877 </string>
+	<string>795 451 490 426 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -3965,10 +3965,12 @@
 			<string>/Users/mmasashi</string>
 		</dict>
 	</array>
+	<key>NoSyncHaveShownPromoWithId_4</key>
+	<true/>
 	<key>NoSyncTimeOfLastPromo</key>
-	<real>465712792.68723202</real>
+	<real>477696452.52796</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>476341156.74528402</real>
+	<real>486687565.52168</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -4033,9 +4035,9 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-02-04T22:24:59Z</date>
+	<date>2016-06-03T22:59:25Z</date>
 	<key>SUSkippedVersion</key>
-	<string>2.1.4</string>
+	<string>3.0.0</string>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -4071,7 +4073,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>.Helvetica Neue DeskInterface</string>
+	<string>.AppleSystemUIFont</string>
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>
