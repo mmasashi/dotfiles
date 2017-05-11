@@ -9,7 +9,7 @@ export EDITOR=vim
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 
-# history 
+# history
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -138,6 +138,7 @@ if [ "$(uname)" = "Darwin" ]; then
   unset PYTHONPATH
   #alias python=python3
   alias pip3='python3 -m pip'
+  alias virtualenv3='virtualenv -p python3'
 
   # apache2 for mac
   alias a2_start="sudo apachectl start"
