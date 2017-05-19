@@ -165,6 +165,8 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'kchmck/vim-coffee-script'
 "cjsx(jsx in coffee script)
 NeoBundle 'mtscout6/vim-cjsx'
+"python
+NeoBundle 'nvie/vim-flake8'
 
 call neobundle#end()
 
