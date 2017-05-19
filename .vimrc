@@ -105,7 +105,7 @@ set t_Co=256
 " -----------------------
 :filetype on
 :autocmd FileType perl set cindent
-:autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
+:autocmd FileType python set tabstop=4 shiftwidth=4 expandtab colorcolumn=80
 :autocmd FileType javascript set ts=2 sw=2 expandtab
 :autocmd FileType coffee set ts=2 sw=2 expandtab
 :autocmd FileType ruby set ts=2 sw=2 expandtab
@@ -192,4 +192,3 @@ set hidden
 
 set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
-
