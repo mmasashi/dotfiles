@@ -172,3 +172,7 @@ fi
 
 # Ohter aliases
 alias ll="ls -al"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/mmasashi/.sdkman"
+[[ -s "/Users/mmasashi/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/mmasashi/.sdkman/bin/sdkman-init.sh"
