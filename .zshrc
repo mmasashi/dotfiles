@@ -139,6 +139,10 @@ if [ "$(uname)" = "Darwin" ]; then
   #alias python=python3
   alias pip3='python3 -m pip'
   alias virtualenv3='virtualenv -p python3'
+  alias pyclear='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
+
+  # Avoid cache file creation (pyc, __pycache__)
+  #export PYTHONDONTWRITEBYTECODE=1
 
   # apache2 for mac
   alias a2_start="sudo apachectl start"
@@ -172,6 +176,7 @@ fi
 
 # Ohter aliases
 alias ll="ls -al"
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/mmasashi/.sdkman"
