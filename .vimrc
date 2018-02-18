@@ -109,6 +109,7 @@ set t_Co=256
 :autocmd FileType javascript set ts=2 sw=2 expandtab
 :autocmd FileType coffee set ts=2 sw=2 expandtab
 :autocmd FileType ruby set ts=2 sw=2 expandtab
+:autocmd FileType sh set ts=2 sw=2 expandtab
 :autocmd FileType java set ts=4 sw=4 expandtab
 :autocmd FileType c,cpp set ts=2 sw=2 expandtab
 :autocmd BufRead,BufNewFile *.js set ft=javascript fenc=utf-8
