@@ -1,3 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 " -----------------------
 " Basical setting
 " -----------------------
@@ -9,7 +12,7 @@ set fileformats=unix,dos,mac
 set vb t_vb=
 " backspace (eol=end of line, start=start of line)
 set backspace=indent,eol,start
-
+" enable modeline (Enable per-file vim settings written in a file)
 set modeline
 
 " -----------------------
@@ -55,11 +58,11 @@ syntax on
 set hlsearch
 " set comment hilight
 highlight Comment ctermfg=DarkCyan
-" 
+" show wildmenu
 set wildmenu
 " wrap line if over width of window
 set wrap
-" hilight Japanese space 
+" hilight Japanese space
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 " status line
@@ -116,6 +119,38 @@ set t_Co=256
 :autocmd BufRead,BufNewFile *.gradle set ts=4 sw=4 expandtab
 
 " -----------------------
+" Enable mouse
+" -----------------------
+
+let g:mouseenabled = 'off'
+if mouseenabled == 'on' && has('mouse')
+    set mouse=a
+    if has('mouse_sgr')
+        set ttymouse=sgr
+    elseif v:version > 703 || v:version is 703 && has('patch632')
+        set ttymouse=sgr
+    else
+        set ttymouse=xterm2
+    endif
+endif
+
+" -----------------------
+" Auto paste mode
+" -----------------------
+if &term =~ "xterm"
+    let &t_SI .= "\e[?2004h"
+    let &t_EI .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
+
+" -----------------------
 " NeoBundle
 " -----------------------
 if has('vim_starting')
@@ -138,14 +173,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'othree/eregex.vim'
 let g:eregex_default_enable = 0
 NeoBundle 'thinca/vim-ref'
-"syntastic
-"NeoBundle 'tpope/vim-pathogen'
-"NeoBundle 'scrooloose/syntastic'
-"call pathogen#infect()
-"let g:syntastic_mode_map = { 'mode': 'active',
-"  \ 'active_filetypes': [],
-"  \ 'passive_filetypes': ['html', 'ruby', 'rb'] }
-
 "html
 NeoBundle 'tpope/vim-haml'
 "ruby
@@ -159,9 +186,9 @@ NeoBundle 'itspriddle/vim-javascript-indent'
 "db
 NeoBundle 'dbext.vim'
 "powerline
-NeoBundle 'alpaca-tc/alpaca_powertabline'
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-NeoBundle 'Lokaltog/powerline-fontpatcher'
+"NeoBundle 'alpaca-tc/alpaca_powertabline'
+"NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+"NeoBundle 'Lokaltog/powerline-fontpatcher'
 "shell
 NeoBundle 'Shougo/vimshell'
 "Coffeescript
@@ -191,7 +218,9 @@ augroup END
 " other
 " -----------------------
 set hidden
-"set shortmess+=I
-
+" Save as sudo
+cmap w!! w !sudo tee > /dev/null %
+" nohilight with double esc
+nmap <silent> <Esc><Esc> :nohlsearch<CR>
 set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
