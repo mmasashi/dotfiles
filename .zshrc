@@ -1,25 +1,40 @@
-# export 
-#export LANG=ja_JP.UTF-8
+# Export
 export LANG=en_US.UTF-8
-#export NLS_LANG=en_US.AL32UTF8
-export PATH=/usr/local/bin:$PATH
-#export PATH=$PATH:/opt/local/bin:/opt/local/sbin
-#export MANPATH=$MANPATH:/opt/local/man
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 export EDITOR=vim
+
+# Bindkey
+# - Enable vim operations on terminal
 bindkey -v
+# - Enable ^R search on vim mode
 bindkey '^R' history-incremental-search-backward
 
-# history
+# History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
+# - Don't show duplicate commands in history
+setopt histignorealldups
+# - Share history with other terminals
+setopt share_history
+# - Remove unnecessary blands in history
+setopt hist_reduce_blanks
+# - Append command to history immediately
+setopt inc_append_history
+# - Add datetime to history
+alias h='fc -lt '%F %T' 1'
 
-# autoload
-autoload -U compinit
-compinit
-autoload colors
-colors
+# Autoload
+# - Autoload completion
+autoload -Uz compinit; compinit
+# - Enable colors
+autoload -Uz colors; colors
 
+# Prompt
+# - Expand variables in PROMPT
+setopt prompt_subst
+# - Show lines not having new line code
+unsetopt promptcr
 case ${UID} in
 0)
   PROMPT="[%{${fg[blue]}%}%n@%m%{${reset_color}%}] %{${fg[blue]}%}#%{${reset_color}%} "
@@ -28,29 +43,36 @@ case ${UID} in
   #RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
   ;;
 *)
-  PROMPT="[%n@%m] "
+  PROMPT='[%n@%m] '
+  #PROMPT='[%n@%m]($(_git_branch_name)) '
   PROMPT2="%B%{${fg[blue]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[blue]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
   #RPROMPT="%{${fg[blue]}%}[%/]%{${reset_color}%}"
   ;;
 esac
 
+# Other options
 limit coredumpsize 102400
-unsetopt promptcr
-# use color
-setopt prompt_subst
-setopt nobeep
-setopt long_list_jobs
-setopt auto_resume
+setopt auto_cd
 setopt auto_list
-setopt list_packed
-setopt hist_ignore_dups
-setopt autopushd
-setopt pushd_ignore_dups
-setopt extended_glob
 setopt auto_menu
+setopt auto_param_keys
+setopt auto_param_slash
+setopt auto_resume
+setopt autopushd
+setopt complete_aliases
+setopt correct
 setopt equals
+setopt extended_glob
+# - Do not exit with Ctrl+D
+setopt ignore_eof
+setopt list_packed
+setopt long_list_jobs
 setopt magic_equal_subst
+setopt noautoremoveslash
+setopt nobeep
+setopt no_flow_control
+setopt pushd_ignore_dups
 
 zstyle ':completion:*:default' menu select=1
 export LSCOLORS=ExFxCxdxBxegedabagacad
@@ -58,17 +80,20 @@ export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30
 export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-setopt auto_cd
-setopt auto_param_keys
-setopt auto_param_slash
-setopt correct
-setopt complete_aliases
-setopt noautoremoveslash
-export TEXT_BROWSER=w3m
-
-# turn off screen lock shortcut(ctrl+s)
+# Turn off screen lock shortcut(ctrl+s)
 stty stop undef
 stty start undef
+
+# Text browser
+export TEXT_BROWSER=w3m
+function _space2plus
+{
+    echo $@ | sed -e "s/ /+/g"
+}
+function google
+{
+    ${TEXT_BROWSER} "http://www.google.com/search?q="`_space2plus $@`
+}
 
 # go
 export GOPATH=$HOME/.go
@@ -78,15 +103,17 @@ if type rbenv >/dev/null 2>&1; then
   eval "$(rbenv init - zsh)"
 fi
 
+# pyenv
+if type pyenv >/dev/null 2>&1; then
+  eval "$(pyenv init - zsh)"
+fi
+
 # rvm
 RVM_SCRIPT_PATH="$HOME/.rvm/scripts/rvm"
 if [ -f "${RVM_SCRIPT_PATH}" ]; then
   source $RVM_SCRIPT_PATH
   PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 fi
-
-# bundle (ruby)
-alias be="bundle exe"
 
 # git
 git config --global color.ui auto
@@ -96,10 +123,6 @@ git config --global alias.st status
 git config --global alias.br branch
 git config --global alias.hist 'log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short'
 alias g=git
-alias gsb="git st -sb"
-# Show feature branches merged into develop branch
-alias gml="g log|grep \"    Merge\"|awk '{if(\$2==\"pull\" && \$3==\"request\"){gsub(/hapyrus\\//, \"\", \$6); print \$6}; if(\$2==\"branch\" && \$3!=\"\\47develop\\47\" && \$7==\"develop\"){gsub(/\\047/, \"\", \$3); print \$3}; if(\$2==\"branch\" && \$5==\"develop\") {gsub(/\\047/, \"\", \$3); print \$3} }'|head -n 15"
-# g log|grep "    Merge"|grep "into develop"
 
 # bazaar
 alias b=bzr
@@ -110,15 +133,9 @@ if [ -f "$sshrc_path" ]; then
   source $sshrc_path
 fi
 
-# Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 # OS dependencies
 ## Mac OSX (Darwin)
 if [ "$(uname)" = "Darwin" ]; then
-  # clear
-  alias c='clear'
-
   # ls color
   alias ls='ls -G'
 
@@ -131,19 +148,6 @@ if [ "$(uname)" = "Darwin" ]; then
   alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
   alias psql_login="psql postgres"
 
-  # python2.x
-  # export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages:$PYTHONPATH
-
-  # python3
-  unset PYTHONPATH
-  #alias python=python3
-  alias pip3='python3 -m pip'
-  alias virtualenv3='virtualenv -p python3'
-  alias pyclear='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
-
-  # Avoid cache file creation (pyc, __pycache__)
-  #export PYTHONDONTWRITEBYTECODE=1
-
   # apache2 for mac
   alias a2_start="sudo apachectl start"
   alias a2_restart="sudo apachectl restart"
@@ -153,11 +157,6 @@ if [ "$(uname)" = "Darwin" ]; then
   alias redis_start="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
   alias redis_stop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.redis.plist"
 
-  # Docker
-  #export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
-  #export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
-  #export DOCKER_TLS_VERIFY=1
-
   # Nginx
   # start:    sudo nginx
   # stop:     sudo nginx -s stop
@@ -166,8 +165,6 @@ if [ "$(uname)" = "Darwin" ]; then
   # Homebrew
   export HOMEBREW_NO_ANALYTICS=1
 
-  # Oracle
-  #source /usr/local/share/instantclient/instantclient.sh
 ## Linux
 else
   # ls color
@@ -175,9 +172,11 @@ else
 fi
 
 # Ohter aliases
-alias ll="ls -al"
+alias c='clear'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias pyclear='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
 
+# sdkman (Java)
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/mmasashi/.sdkman"
 [[ -s "/Users/mmasashi/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/mmasashi/.sdkman/bin/sdkman-init.sh"
