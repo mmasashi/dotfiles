@@ -1,9 +1,0 @@
----
-BUNDLE_PATH: vendor/bundle
-BUNDLE_BUILD__LIBV8: --with-system-v8
-BUNDLE_BUILD__THERUBYRACER: --with-system-v8
-BUNDLE_BUILD__EVENTMACHINE: --with-cppflags=-I/usr/local/opt/openssl/include
-BUNDLE_BUILD__RUBY_BINLOG: --with-openssl-lib=/usr/local/Cellar/openssl/1.0.2d_1/lib --with-openssl-include=/usr/local/Cellar/openssl/1.0.2d_1/include --with-openssl-rpath=/usr/local/Cellar/openssl/1.0.2d_1/lib
-BUNDLE_GEM__COC: false
-BUNDLE_GEM__MIT: false
-BUNDLE_GEM__TEST: rspec

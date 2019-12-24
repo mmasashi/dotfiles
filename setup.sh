@@ -35,7 +35,8 @@ if [[ ! -f ~/.ssh/config ]]; then
 fi
 
 # Setup vim plugins
-#   Run `git submodule update --init` in dotfiles
-#   directory to clone NeoBundle.
+#   Download vim-plug script
+#     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+#     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 #   Launch "vim"
 #   Run ":NeoBundleInstall" to install vim plugins

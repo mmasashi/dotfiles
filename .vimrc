@@ -151,60 +151,60 @@ if &term =~ "xterm"
 endif
 
 " -----------------------
-" NeoBundle
+" vim-plug
 " -----------------------
-if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/dotfiles/.vim/bundle/neobundle.vim
+call plug#begin()
+
+" nerdtreee
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'othree/eregex.vim'
+let g:eregex_default_enable = 0
+Plug 'thinca/vim-ref'
+Plug 'thinca/vim-quickrun'
+Plug 'Shougo/deol.nvim'
+
+" deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+elseif has('python3')
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+else
+  Plug 'Shougo/neocomplete.vim'
+endif
+let g:deoplete#enable_at_startup = 1
+
+" denite
+if has('nvim')
+  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+elseif has('python3')
+  Plug 'Shougo/denite.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+else
+  Plug 'Shougo/unite.vim'
 endif
 
-call neobundle#begin(expand('~/.vim/bundle')) " required
-
-" Let NeoBundle manage NeoBundl
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/neocomplcache'
-let g:neocomplcache_enable_at_startup = 1
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'clones/vim-l9'
-NeoBundle 'The-NERD-tree'
-NeoBundle 'The-NERD-Commenter'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'othree/eregex.vim'
-let g:eregex_default_enable = 0
-NeoBundle 'thinca/vim-ref'
-"html
-NeoBundle 'tpope/vim-haml'
+" html
+Plug 'tpope/vim-haml'
 "ruby
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'tpope/vim-cucumber'
-NeoBundle 'janx/vim-rubytest'
-"js
-NeoBundle 'JavaScript-syntax'
-NeoBundle 'itspriddle/vim-javascript-indent'
-"db
-NeoBundle 'dbext.vim'
-"powerline
-"NeoBundle 'alpaca-tc/alpaca_powertabline'
-"NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-"NeoBundle 'Lokaltog/powerline-fontpatcher'
-"shell
-NeoBundle 'Shougo/vimshell'
-"Coffeescript
-NeoBundle 'kchmck/vim-coffee-script'
-"cjsx(jsx in coffee script)
-NeoBundle 'mtscout6/vim-cjsx'
-"python
-NeoBundle 'nvie/vim-flake8'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-cucumber'
+Plug 'janx/vim-rubytest'
+" js
+Plug 'pangloss/vim-javascript'
+" python
+Plug 'nvie/vim-flake8'
+" powerline
+"Plug 'alpaca-tc/alpaca_powertabline'
+"Plug 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+"Plug 'Lokaltog/powerline-fontpatcher'
 
-call neobundle#end()
-
-filetype plugin indent on     " required!
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+call plug#end()
 
 "close tag automatically
 augroup MyXML
