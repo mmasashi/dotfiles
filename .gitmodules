@@ -1,7 +1,0 @@
-[submodule "/Users/mmasashi/dotfiles/vimfiles/vundle.git"]
-	url = http://github.com/gmarik/vundle.git
-[submodule ".vim/vundle.git"]
-	url = git://github.com/gmarik/vundle.git
-[submodule ".vim/bundle/neobundle.vim"]
-	path = .vim/bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim.git
