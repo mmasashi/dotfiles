@@ -5,7 +5,7 @@ scriptencoding utf-8
 " -----------------------
 " no compatible to vi
 " set noncompatible
-" new line code 
+" new line code
 set fileformats=unix,dos,mac
 " no beep
 set vb t_vb=
@@ -207,10 +207,10 @@ call plug#end()
 
 "close tag automatically
 augroup MyXML
-	autocmd!
-	autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-	autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-	autocmd Filetype eruby inoremap <buffer> </ </<C-x><C-o>
+    autocmd!
+    autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+    autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+    autocmd Filetype eruby inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
 " -----------------------
