@@ -96,13 +96,6 @@ set shiftwidth=4
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 
 " -----------------------
-" powerline
-" -----------------------
-"let g:Powerline_symbols = 'fancy'
-let g:Powerline_symbols = 'compatible'
-set t_Co=256
-
-" -----------------------
 " Autocommand
 " -----------------------
 :filetype on
@@ -163,6 +156,7 @@ let g:eregex_default_enable = 0
 Plug 'thinca/vim-ref'
 Plug 'thinca/vim-quickrun'
 Plug 'Shougo/deol.nvim'
+Plug 'simeji/winresizer'
 
 " deoplete
 if has('nvim')
@@ -189,6 +183,8 @@ endif
 
 " html
 Plug 'tpope/vim-haml'
+" git
+Plug 'tpope/vim-fugitive'
 "ruby
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -216,10 +212,11 @@ augroup END
 " -----------------------
 " Powerline
 " -----------------------
+set t_Co=256
 " Note: This affects tmux
 " set ambiwidth=double
 set laststatus=2
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
@@ -265,6 +262,12 @@ let g:airline_symbols.linenr = ''
 " let g:airline_symbols.branch = '⭠'
 " let g:airline_symbols.readonly = '⭤'
 " let g:airline_symbols.linenr = '⭡'
+
+" -----------------------
+" winresizer (Ctrl+e to start resizing a pane)
+" -----------------------
+let g:winresizer_vert_resize = 1
+let g:winresizer_horiz_resize = 1
 
 " -----------------------
 " other
