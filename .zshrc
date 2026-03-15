@@ -3,6 +3,10 @@
 # -----------------------------
 export EDITOR=vim
 export VISUAL=vim
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR=nvim
+  export VISUAL=nvim
+fi
 export PAGER="less -FR"
 export LANG=en_US.UTF-8
 export PATH=/usr/local/sbin:/usr/local/bin:$PATH
