@@ -2,7 +2,6 @@
 
 BASE_DIR=$(cd $(dirname $0);pwd)
 FILE_LIST=(
-.gvimrc
 .inputrc
 .vimrc
 .zshrc
@@ -10,11 +9,8 @@ FILE_LIST=(
 .tmux.conf
 .gitconfig
 .gitignore
-.hgrc
-.gemrc
 .vim
 .bundle
-.octaverc
 )
 # .sshrc, .ssh/config is not copied.
 
