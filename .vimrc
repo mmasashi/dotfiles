@@ -98,3 +98,27 @@ set hidden
 
 set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+
+" -----------------------
+"  Fuzzy file search
+"  brew install fd ripgrep fzf
+" -----------------------
+set path+=**
+set wildmenu
+
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case
+  set grepformat=%f:%l:%c:%m
+endif
+
+" open file with fd + fzf
+nnoremap <Leader>f :call OpenFzfFile()<CR>
+function! OpenFzfFile()
+  let file = substitute(system("sh -c 'fd -t f | fzf'"), '\n$', '', '')
+  if empty(file)
+    return
+  endif
+  execute 'edit ' . fnameescape(file)
+endfunction
+" grep current word with rg
+nnoremap <Leader>g :execute 'silent grep! ' . expand('<cword>') . ' .' \| copen<CR>
