@@ -10,7 +10,6 @@ FILE_LIST=(
 .gitconfig
 .gitignore
 .vim
-.bundle
 )
 # .sshrc, .ssh/config is not copied.
 
@@ -21,18 +20,17 @@ do
   fi
 done
 
-# setup directories
+# set up directories
 mkdir -p ~/logs/iterm2
 
-# setup ./ssh/config
+# set up ./ssh/config
 mkdir -p ~/.ssh
 if [[ ! -f ~/.ssh/config ]]; then
   ln -s $BASE_DIR/.ssh/config ~/.ssh/config
 fi
 
-# Setup vim plugins
-#   Download vim-plug script
-#     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-#     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-#   Launch "vim"
-#   Run ":NeoBundleInstall" to install vim plugins
+# set up nvim
+mkdir -p ~/.config
+if [[ ! -d ~/.config/nvim ]]; then
+  ln -s $BASE_DIR/.config/nvim ~/.config/nvim
+fi
